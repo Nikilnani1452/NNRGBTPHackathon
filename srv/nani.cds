@@ -643,27 +643,27 @@ annotate nani.Items with {
             ]
         }
     );
-        qty       @(
-        Common.Text: qty.stock_qty,
-        Common.TextArrangement: #TextOnly,
-        Common.ValueListWithFixedValues: true,
-        Common.ValueList               : {
-            Label         : 'Quantiy',
-            CollectionPath: 'Stock',
-            Parameters    : [
-                {
-                    $Type            : 'Common.ValueListParameterInOut',
-                    LocalDataProperty: qty_ID,
-                    ValueListProperty: 'ID'
-                },
-                {
-                    $Type            : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty: 'stock_qty'
-                },
+    //     qty       @(
+    //     Common.Text: qty.stock_qty,
+    //     Common.TextArrangement: #TextOnly,
+    //     Common.ValueListWithFixedValues: true,
+    //     Common.ValueList               : {
+    //         Label         : 'Quantiy',
+    //         CollectionPath: 'Stock',
+    //         Parameters    : [
+    //             {
+    //                 $Type            : 'Common.ValueListParameterInOut',
+    //                 LocalDataProperty: qty_ID,
+    //                 ValueListProperty: 'ID'
+    //             },
+    //             {
+    //                 $Type            : 'Common.ValueListParameterDisplayOnly',
+    //                 ValueListProperty: 'stock_qty'
+    //             },
 
-            ]
-        }
-    );
+    //         ]
+    //     }
+    // );
     price     @(
         Common.Text: price.product_sell,
         Common.TextArrangement: #TextOnly,
