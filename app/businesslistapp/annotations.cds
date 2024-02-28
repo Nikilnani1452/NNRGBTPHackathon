@@ -1,0 +1,1 @@
+using nani as service from '../../srv/nani';
