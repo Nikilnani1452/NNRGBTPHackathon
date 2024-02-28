@@ -5,15 +5,15 @@ using { managed, cuid } from '@sap/cds/common';
 }
 entity Business_Partner {
     key ID: UUID;
-    bp_no:String(6);
+    bp_no:Integer default 0 @Core.Computed;
     @title:'Name'
-    name:String(15);
+    name:String(20);
     @title:'Address 1'
-    add1:String(15);
+    add1:String(20);
     @title:'Address 2'
-    add2:String(15);
+    add2:String(20);
     @title:'City'
-    city:String(15);
+    city:String(20);
     @title:'State'
     state:Association to States;
     @title:'pin code'
@@ -42,13 +42,13 @@ entity Store {
 }
 
 entity Product : cuid, managed {
-    
+    key ID            : UUID;
     @title: 'ProductID'
     product_id: String(30);
     @title: 'Product Name'
     product_name: String(20) ;
     @title: 'Product Image URL'
-    product_img: String default 'https://imgur.com/djS2boy.jpg';
+    product_img: String default 'https://imgur.com/djS2boy.jpg'; 
     @title: 'Product Cost Price'
     product_cost: Integer;
     @title: 'Product Sell Price'
@@ -68,20 +68,15 @@ entity PurchaseApp {
     pon:Integer;
     bp:Association to Business_Partner;
     pDate:Date;
+    storeId         : Association to Store;
     Items:Composition of many{
         key ID:UUID;
-        item:Association to Items;
+        qty:String(10);
+        productId       : Association to Product;
+        price:String(10);
     }
 }
 
-
-entity Items {
-    key ID :UUID;
-     storeId         : Association to Store;
-    qty:Association to Stock;
-    productId       : Association to Product;
-    price:Association to Product;
-}
 
 entity SalesApp {
     key ID :UUID;
@@ -90,7 +85,9 @@ entity SalesApp {
     saleDate:Association to PurchaseApp;
      Items:Composition of many{
         key ID:UUID;
-        item:Association to Items;
+        qty:String(10);
+        productId       : Association to Product;
+        price:String(10);
     }
 }
 @cds.persistence.skip
